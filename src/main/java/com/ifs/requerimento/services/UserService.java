@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.ifs.requerimento.dto.UserDTO;
+import com.ifs.requerimento.entities.User;
 import com.ifs.requerimento.repositories.UserRepository;
 
 @Service
@@ -23,5 +24,12 @@ public class UserService {
 	@Transactional(readOnly = true)
 	public UserDTO findByRegistration(Long registration){
 		return new UserDTO(userRepository.findById(registration).get());
+	}
+	
+	@Transactional
+	public UserDTO save(UserDTO data) {
+		User newUser = new User(data);
+		userRepository.save(newUser);
+		return new UserDTO(newUser);
 	}
 }

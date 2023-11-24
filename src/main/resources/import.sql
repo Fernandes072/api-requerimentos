@@ -1,1 +1,1 @@
-INSERT INTO `users`(registration, password) VALUES (2020, '20'),(2021, '21'),(2022, '22');
+INSERT INTO `users`(registration, password, name, email, course) VALUES (2020, '20', 'joao', 'joao@email.com', 'ciencia'),(2021, '21', 'maria', 'maria@email.com', 'msi');

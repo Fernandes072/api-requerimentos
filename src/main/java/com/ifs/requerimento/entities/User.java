@@ -2,6 +2,10 @@ package com.ifs.requerimento.entities;
 
 import java.util.Objects;
 
+import org.springframework.beans.BeanUtils;
+
+import com.ifs.requerimento.dto.UserDTO;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
@@ -13,10 +17,17 @@ public class User {
 	private Long registration;
 	
 	private String password;
+	private String name;
+	private String email;
+	private String course;
 
 	public User(Long registration, String password) {
 		this.registration = registration;
 		this.password = password;
+	}
+	
+	public User(UserDTO entity) {
+		BeanUtils.copyProperties(entity, this);
 	}
 	
 	public User() {
@@ -36,6 +47,30 @@ public class User {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getCourse() {
+		return course;
+	}
+
+	public void setCourse(String course) {
+		this.course = course;
 	}
 
 	@Override
