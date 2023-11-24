@@ -1,0 +1,1 @@
+INSERT INTO `users`(registration, password) VALUES (2020, '20'),(2021, '21'),(2022, '22');
