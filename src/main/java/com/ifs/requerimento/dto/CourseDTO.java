@@ -20,8 +20,8 @@ public class CourseDTO {
 		return courseId;
 	}
 
-	public void setCourseId(Long id) {
-		this.courseId = id;
+	public void setCourseId(Long courseId) {
+		this.courseId = courseId;
 	}
 
 	public String getName() {

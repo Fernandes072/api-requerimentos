@@ -24,15 +24,15 @@ public class User {
 	private String email;
 	
 	@ManyToOne @JoinColumn(name = "course_id")
-	private Course course;
+	private Course courseId;
 	
-	public User(Long registration, String username, String password, String name, String email, Course course) {
+	public User(Long registration, String username, String password, String name, String email, Course courseId) {
 		this.registration = registration;
 		this.username = username;
 		this.password = password;
 		this.name = name;
 		this.email = email;
-		this.course = course;
+		this.courseId = courseId;
 	}
 
 	public User(UserDTO entity) {
@@ -82,12 +82,12 @@ public class User {
 		this.email = email;
 	}
 
-	public Course getCourse() {
-		return course;
+	public Course getCourseId() {
+		return courseId;
 	}
 
-	public void setCourse(Course course) {
-		this.course = course;
+	public void setCourseId(Course courseId) {
+		this.courseId = courseId;
 	}
 
 	@Override

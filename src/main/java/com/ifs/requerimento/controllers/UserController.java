@@ -29,6 +29,16 @@ public class UserController {
 		return userService.findByRegistration(registration);
 	}
 	
+	@GetMapping(value = "/username/{username}")
+	public UserDTO findByUsername(@PathVariable String username){
+		return userService.findByUsername(username);
+	}
+	
+	@GetMapping(value = "/email/{email}")
+	public UserDTO findByEmail(@PathVariable String email){
+		return userService.findByEmail(email);
+	}
+	
 	@PostMapping
 	public UserDTO insertUser(@RequestBody UserDTO data) {
 		return userService.save(data);

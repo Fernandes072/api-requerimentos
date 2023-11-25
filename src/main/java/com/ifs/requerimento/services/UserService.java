@@ -26,6 +26,16 @@ public class UserService {
 		return new UserDTO(userRepository.findById(registration).get());
 	}
 	
+	@Transactional(readOnly = true)
+	public UserDTO findByUsername(String username){
+		return new UserDTO(userRepository.findByUsername(username));
+	}
+	
+	@Transactional(readOnly = true)
+	public UserDTO findByEmail(String email){
+		return new UserDTO(userRepository.findByEmail(email));
+	}
+	
 	@Transactional
 	public UserDTO save(UserDTO data) {
 		User newUser = new User(data);

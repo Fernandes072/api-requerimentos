@@ -4,6 +4,7 @@ import org.springframework.beans.BeanUtils;
 
 import com.ifs.requerimento.entities.Course;
 import com.ifs.requerimento.entities.User;
+import com.ifs.requerimento.projections.UserProjection;
 
 public class UserDTO {
 	
@@ -12,10 +13,14 @@ public class UserDTO {
 	private String password;
 	private String name;
 	private String email;
-	private Course course;
+	private Course courseId;
 
 	public UserDTO(User entity) {
 		BeanUtils.copyProperties(entity, this);
+	}
+	
+	public UserDTO(UserProjection projection) {
+		BeanUtils.copyProperties(projection, this);
 	}
 	
 	public UserDTO() {
@@ -29,8 +34,6 @@ public class UserDTO {
 		this.registration = registration;
 	}
 	
-	
-
 	public String getUsername() {
 		return username;
 	}
@@ -63,11 +66,11 @@ public class UserDTO {
 		this.email = email;
 	}
 
-	public Course getCourse() {
-		return course;
+	public Course getCourseId() {
+		return courseId;
 	}
 
-	public void setCourse(Course course) {
-		this.course = course;
+	public void setCourseId(Course courseId) {
+		this.courseId = courseId;
 	}	
 }

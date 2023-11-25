@@ -18,8 +18,8 @@ public class Course {
 	
 	private String name;
 
-	public Course(Long id, String name) {
-		this.courseId = id;
+	public Course(Long courseId, String name) {
+		this.courseId = courseId;
 		this.name = name;
 	}
 
@@ -30,8 +30,8 @@ public class Course {
 		return courseId;
 	}
 
-	public void setCourseId(Long id) {
-		this.courseId = id;
+	public void setCourseId(Long courseId) {
+		this.courseId = courseId;
 	}
 
 	public String getName() {
