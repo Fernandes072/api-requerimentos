@@ -6,6 +6,7 @@ import org.springframework.beans.BeanUtils;
 
 import com.ifs.requerimento.dto.UserDTO;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
@@ -18,9 +19,12 @@ public class User {
 	@Id
 	private Long registration;
 	
+	@Column(unique = true)
 	private String username;
 	private String password;
 	private String name;
+	
+	@Column(unique = true)
 	private String email;
 	
 	@ManyToOne @JoinColumn(name = "course_id")
