@@ -36,6 +36,11 @@ public class UserService {
 		return new UserDTO(userRepository.findByEmail(email));
 	}
 	
+	@Transactional(readOnly = true)
+	public List<UserDTO> findByRegistrationOrName(String registrationName){
+		return userRepository.findByRegistrationOrName(registrationName).stream().map(x -> new UserDTO(x)).toList();
+	}
+	
 	@Transactional
 	public UserDTO save(UserDTO data) {
 		User newUser = new User(data);

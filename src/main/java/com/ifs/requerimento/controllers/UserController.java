@@ -39,6 +39,11 @@ public class UserController {
 		return userService.findByEmail(email);
 	}
 	
+	@GetMapping(value = "/search/{registrationName}")
+	public List<UserDTO> findByRegistrationOrName(@PathVariable String registrationName){
+		return userService.findByRegistrationOrName(registrationName);
+	}
+	
 	@PostMapping
 	public UserDTO insertUser(@RequestBody UserDTO data) {
 		return userService.save(data);
