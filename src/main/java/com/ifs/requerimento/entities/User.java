@@ -21,8 +21,10 @@ public class User {
 	
 	@Column(unique = true)
 	private String username;
+	
 	private String password;
 	private String name;
+	private String image;
 	
 	@Column(unique = true)
 	private String email;
@@ -30,11 +32,12 @@ public class User {
 	@ManyToOne @JoinColumn(name = "course_id")
 	private Course courseId;
 	
-	public User(Long registration, String username, String password, String name, String email, Course courseId) {
+	public User(Long registration, String username, String password, String name, String image, String email, Course courseId) {
 		this.registration = registration;
 		this.username = username;
 		this.password = password;
 		this.name = name;
+		this.image = image;
 		this.email = email;
 		this.courseId = courseId;
 	}
@@ -76,6 +79,14 @@ public class User {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
 	}
 
 	public String getEmail() {
