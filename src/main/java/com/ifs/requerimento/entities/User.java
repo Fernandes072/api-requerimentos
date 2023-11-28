@@ -32,7 +32,9 @@ public class User {
 	@ManyToOne @JoinColumn(name = "course_id")
 	private Course courseId;
 	
-	public User(Long registration, String username, String password, String name, String image, String email, Course courseId) {
+	private String administrator;
+	
+	public User(Long registration, String username, String password, String name, String image, String email, Course courseId, String administrator) {
 		this.registration = registration;
 		this.username = username;
 		this.password = password;
@@ -40,6 +42,7 @@ public class User {
 		this.image = image;
 		this.email = email;
 		this.courseId = courseId;
+		this.administrator = administrator;
 	}
 
 	public User(UserDTO entity) {
@@ -103,6 +106,14 @@ public class User {
 
 	public void setCourseId(Course courseId) {
 		this.courseId = courseId;
+	}
+
+	public String getAdministrator() {
+		return administrator;
+	}
+
+	public void setAdministrator(String administrator) {
+		this.administrator = administrator;
 	}
 
 	@Override

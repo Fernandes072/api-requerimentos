@@ -15,6 +15,7 @@ public class UserDTO {
 	private String image;
 	private String email;
 	private Course courseId;
+	private String administrator;
 
 	public UserDTO(User entity) {
 		BeanUtils.copyProperties(entity, this);
@@ -81,5 +82,13 @@ public class UserDTO {
 
 	public void setCourseId(Course courseId) {
 		this.courseId = courseId;
-	}	
+	}
+
+	public String getAdministrator() {
+		return administrator;
+	}
+
+	public void setAdministrator(String administrator) {
+		this.administrator = administrator;
+	}
 }
