@@ -11,5 +11,8 @@ public interface RequerimentRepository extends JpaRepository<Requeriment, Long>{
 	
 	@Query(nativeQuery = true, value = "SELECT * FROM requeriments WHERE LOWER(registration) LIKE LOWER(CONCAT('%', :registrationRequerimentId, '%')) OR LOWER(requeriment_id) LIKE LOWER(CONCAT('%', :registrationRequerimentId, '%'))")
 	List<Requeriment> findByRegistrationOrRequerimentId(String registrationRequerimentId);
+	
+	@Query(nativeQuery = true, value = "SELECT * FROM requeriments WHERE registration = :registration")
+	List<Requeriment> findByUser(Long registration);
 
 }

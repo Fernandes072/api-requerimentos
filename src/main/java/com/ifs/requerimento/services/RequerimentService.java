@@ -28,6 +28,11 @@ public class RequerimentService {
 	}
 	
 	@Transactional(readOnly = true)
+	public List<RequerimentDTO> findByUser(Long id) {
+		return requerimentRepository.findByUser(id).stream().map(x -> new RequerimentDTO(x)).toList();
+	}
+	
+	@Transactional(readOnly = true)
 	public List<RequerimentDTO> findByRegistrationOrRequerimentId(String registrationRequerimentId) {
 		return requerimentRepository.findByRegistrationOrRequerimentId(registrationRequerimentId).stream().map(x -> new RequerimentDTO(x)).toList();
 	}

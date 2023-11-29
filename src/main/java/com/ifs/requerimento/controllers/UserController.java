@@ -10,7 +10,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ifs.requerimento.dto.RequerimentDTO;
 import com.ifs.requerimento.dto.UserDTO;
+import com.ifs.requerimento.services.RequerimentService;
 import com.ifs.requerimento.services.UserService;
 
 @RestController @RequestMapping(value = "/users")
@@ -18,6 +20,9 @@ public class UserController {
 	
 	@Autowired
 	private UserService userService;
+	
+	@Autowired
+	private RequerimentService requerimentService;
 	
 	@GetMapping
 	public List<UserDTO> findAll(){
@@ -42,6 +47,11 @@ public class UserController {
 	@GetMapping(value = "/search/{registrationName}")
 	public List<UserDTO> findByRegistrationOrName(@PathVariable String registrationName){
 		return userService.findByRegistrationOrName(registrationName);
+	}
+	
+	@GetMapping(value = "/{id}/requeriments")
+	public List<RequerimentDTO> findByUser(@PathVariable Long id){
+		return requerimentService.findByUser(id);
 	}
 	
 	@PostMapping
