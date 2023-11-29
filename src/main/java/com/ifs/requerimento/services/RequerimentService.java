@@ -39,4 +39,9 @@ public class RequerimentService {
 		requerimentRepository.save(newRequeriment);
 		return new RequerimentDTO(newRequeriment);
 	}
+	
+	@Transactional
+	public void delete(Long id) {
+		requerimentRepository.deleteById(id);
+	}
 }
