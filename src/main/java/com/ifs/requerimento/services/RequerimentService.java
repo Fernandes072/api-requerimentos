@@ -7,6 +7,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.ifs.requerimento.dto.RequerimentDTO;
+import com.ifs.requerimento.dto.RequerimentMinDTO;
+import com.ifs.requerimento.entities.Requeriment;
 import com.ifs.requerimento.repositories.RequerimentRepository;
 
 @Service
@@ -28,5 +30,13 @@ public class RequerimentService {
 	@Transactional(readOnly = true)
 	public List<RequerimentDTO> findByRegistrationOrRequerimentId(String registrationRequerimentId) {
 		return requerimentRepository.findByRegistrationOrRequerimentId(registrationRequerimentId).stream().map(x -> new RequerimentDTO(x)).toList();
+	}
+	
+	@Transactional
+	public RequerimentDTO save(RequerimentMinDTO data) {
+		System.out.println(data.getRegistration());
+		Requeriment newRequeriment = new Requeriment(data);
+		requerimentRepository.save(newRequeriment);
+		return new RequerimentDTO(newRequeriment);
 	}
 }

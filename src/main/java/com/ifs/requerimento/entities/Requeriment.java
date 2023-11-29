@@ -2,6 +2,11 @@ package com.ifs.requerimento.entities;
 
 import java.util.Objects;
 
+import org.springframework.beans.BeanUtils;
+
+import com.ifs.requerimento.dto.RequerimentDTO;
+import com.ifs.requerimento.dto.RequerimentMinDTO;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -24,16 +29,31 @@ public class Requeriment {
 	private String specification;
 	private String reason;
 	
+	@Column(name = "send_date")
+	private String sendDate;
+	
 	public Requeriment() {
 		
 	}
 
-	public Requeriment(Long requerimentId, User registration, String type, String specification, String reason) {
+	public Requeriment(Long requerimentId, User registration, String type, String specification, String reason, String sendDate) {
 		this.requerimentId = requerimentId;
 		this.registration = registration;
 		this.type = type;
 		this.specification = specification;
 		this.reason = reason;
+	}
+	
+	public Requeriment(RequerimentDTO entity) {
+		BeanUtils.copyProperties(entity, this);
+	}
+	
+	public Requeriment(RequerimentMinDTO entity) {
+		registration = entity.getRegistration();
+		type = entity.getType();
+		specification = entity.getSpecification();
+		reason = entity.getReason();
+		sendDate = entity.getSendDate();
 	}
 
 	public Long getRequerimentId() {
@@ -74,6 +94,14 @@ public class Requeriment {
 
 	public void setReason(String reason) {
 		this.reason = reason;
+	}
+
+	public String getSendDate() {
+		return sendDate;
+	}
+
+	public void setSendDate(String sendDate) {
+		this.sendDate = sendDate;
 	}
 
 	@Override
