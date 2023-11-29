@@ -26,4 +26,9 @@ public class RequerimentController {
 	public RequerimentDTO findById(@PathVariable Long id) {
 		return requerimentService.findById(id);
 	}
+	
+	@GetMapping(value = "/search/{registrationRequerimentId}")
+	public List<RequerimentDTO> findByRegistrationORRequerimentId(@PathVariable String registrationRequerimentId){
+		return requerimentService.findByRegistrationOrRequerimentId(registrationRequerimentId);
+	}
 }

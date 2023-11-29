@@ -24,4 +24,9 @@ public class RequerimentService {
 	public RequerimentDTO findById(Long id) {
 		return new RequerimentDTO(requerimentRepository.findById(id).get());
 	}
+	
+	@Transactional(readOnly = true)
+	public List<RequerimentDTO> findByRegistrationOrRequerimentId(String registrationRequerimentId) {
+		return requerimentRepository.findByRegistrationOrRequerimentId(registrationRequerimentId).stream().map(x -> new RequerimentDTO(x)).toList();
+	}
 }
