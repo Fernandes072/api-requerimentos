@@ -2,27 +2,23 @@ package com.ifs.requerimento.dto;
 
 import org.springframework.beans.BeanUtils;
 
-import com.ifs.requerimento.entities.Course;
 import com.ifs.requerimento.entities.User;
-import com.ifs.requerimento.projections.UserProjection;
 
 public class UserDTO {
 	
 	private Long registration;
 	private String username;
 	private String password;
-	private String name;
+	private String firstName;
+	private String lastName;
+	private String phoneNumber;
 	private String image;
 	private String email;
-	private Course courseId;
+	private String course;
 	private String administrator;
 
 	public UserDTO(User entity) {
 		BeanUtils.copyProperties(entity, this);
-	}
-	
-	public UserDTO(UserProjection projection) {
-		BeanUtils.copyProperties(projection, this);
 	}
 	
 	public UserDTO() {
@@ -52,12 +48,28 @@ public class UserDTO {
 		this.password = password;
 	}
 
-	public String getName() {
-		return name;
+	public String getFirstName() {
+		return firstName;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public String getPhoneNumber() {
+		return phoneNumber;
+	}
+
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
 	}
 
 	public String getImage() {
@@ -76,12 +88,12 @@ public class UserDTO {
 		this.email = email;
 	}
 
-	public Course getCourseId() {
-		return courseId;
+	public String getCourse() {
+		return course;
 	}
 
-	public void setCourseId(Course courseId) {
-		this.courseId = courseId;
+	public void setCourse(String course) {
+		this.course = course;
 	}
 
 	public String getAdministrator() {

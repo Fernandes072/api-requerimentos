@@ -1,34 +1,28 @@
 package com.ifs.requerimento.dto;
 
-import org.springframework.beans.BeanUtils;
-
-import com.ifs.requerimento.entities.Requeriment;
+import com.ifs.requerimento.entities.Requirement;
 import com.ifs.requerimento.entities.User;
 
-public class RequerimentDTO {
+public class RequirementMinDTO {
 	
-	private Long requerimentId;
 	private User registration;
 	private String type;
 	private String specification;
 	private String reason;
 	private String sendDate;
 	
-	public RequerimentDTO() {
+	public RequirementMinDTO() {
 		
 	}
 
-	public RequerimentDTO(Requeriment entity) {
-		BeanUtils.copyProperties(entity, this);
+	public RequirementMinDTO(Requirement entity) {
+		registration = entity.getRegistration();
+		type = entity.getType();
+		specification = entity.getSpecification();
+		reason = entity.getReason();
+		sendDate = entity.getSendDate();
 	}
 
-	public Long getRequerimentId() {
-		return requerimentId;
-	}
-
-	public void setRequerimentId(Long requerimentId) {
-		this.requerimentId = requerimentId;
-	}
 
 	public User getRegistration() {
 		return registration;

@@ -15,6 +15,6 @@ public interface UserRepository extends JpaRepository<User, Long>{
 	@Query(nativeQuery = true, value = "SELECT * FROM users WHERE email = :email")
 	User findByEmail(String email);
 	
-	@Query(nativeQuery = true, value = "SELECT * FROM users WHERE LOWER(registration) LIKE LOWER(CONCAT('%', :registrationName, '%')) OR LOWER(name) LIKE LOWER(CONCAT('%', :registrationName, '%'))")
+	@Query(nativeQuery = true, value = "SELECT * FROM users WHERE LOWER(registration) LIKE LOWER(CONCAT('%', :registrationName, '%')) OR LOWER(CONCAT(first_name, ' ', last_name)) LIKE LOWER(CONCAT('%', :registrationName, '%'))")
 	List<User> findByRegistrationOrName(String registrationName);
 }

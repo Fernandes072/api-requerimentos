@@ -9,8 +9,6 @@ import com.ifs.requerimento.dto.UserDTO;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity @Table(name = "users")
@@ -23,25 +21,33 @@ public class User {
 	private String username;
 	
 	private String password;
-	private String name;
+	
+	@Column(name = "first_name")
+	private String firstName;
+	
+	@Column(name = "last_name")
+	private String lastName;
+	
+	@Column(name = "phone_number", unique = true) 
+	private String phoneNumber;
 	private String image;
 	
 	@Column(unique = true)
 	private String email;
 	
-	@ManyToOne @JoinColumn(name = "course_id")
-	private Course courseId;
-	
+	private String course;
 	private String administrator;
 	
-	public User(Long registration, String username, String password, String name, String image, String email, Course courseId, String administrator) {
+	public User(Long registration, String username, String password, String firstName, String lastName, String phoneNumber, String image, String email, String course, String administrator) {
 		this.registration = registration;
 		this.username = username;
 		this.password = password;
-		this.name = name;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.phoneNumber = phoneNumber;
 		this.image = image;
 		this.email = email;
-		this.courseId = courseId;
+		this.course = course;
 		this.administrator = administrator;
 	}
 
@@ -75,13 +81,29 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	
-	public String getName() {
-		return name;
+
+	public String getFirstName() {
+		return firstName;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public String getPhoneNumber() {
+		return phoneNumber;
+	}
+
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
 	}
 
 	public String getImage() {
@@ -100,12 +122,12 @@ public class User {
 		this.email = email;
 	}
 
-	public Course getCourseId() {
-		return courseId;
+	public String getCourse() {
+		return course;
 	}
 
-	public void setCourseId(Course courseId) {
-		this.courseId = courseId;
+	public void setCourse(String course) {
+		this.course = course;
 	}
 
 	public String getAdministrator() {

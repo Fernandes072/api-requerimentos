@@ -7,9 +7,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.ifs.requerimento.dto.UserDTO;
-import com.ifs.requerimento.entities.Requeriment;
+import com.ifs.requerimento.entities.Requirement;
 import com.ifs.requerimento.entities.User;
-import com.ifs.requerimento.repositories.RequerimentRepository;
+import com.ifs.requerimento.repositories.RequirementRepository;
 import com.ifs.requerimento.repositories.UserRepository;
 
 @Service
@@ -18,7 +18,8 @@ public class UserService {
 	@Autowired
 	private UserRepository userRepository;
 	
-	@Autowired RequerimentRepository requerimentRepository;
+	@Autowired 
+	private RequirementRepository requirementRepository;
 	
 	@Transactional(readOnly = true)
 	public List<UserDTO> findAll(){
@@ -53,10 +54,10 @@ public class UserService {
 	}
 	
 	@Transactional
-	public void delete(Long id) {
-		for (Requeriment requeriment : requerimentRepository.findByUser(id)) {
-			requerimentRepository.deleteById(requeriment.getRequerimentId());
+	public void delete(Long registration) {
+		for (Requirement requirement : requirementRepository.findByUser(registration)) {
+			requirementRepository.deleteById(requirement.getRequirementId());
 		}
-		userRepository.deleteById(id);
+		userRepository.deleteById(registration);
 	}
 }

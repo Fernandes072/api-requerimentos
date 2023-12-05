@@ -4,8 +4,8 @@ import java.util.Objects;
 
 import org.springframework.beans.BeanUtils;
 
-import com.ifs.requerimento.dto.RequerimentDTO;
-import com.ifs.requerimento.dto.RequerimentMinDTO;
+import com.ifs.requerimento.dto.RequirementDTO;
+import com.ifs.requerimento.dto.RequirementMinDTO;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -16,11 +16,11 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
-@Entity @Table(name="requeriments")
-public class Requeriment {
+@Entity @Table(name="requirements")
+public class Requirement {
 	
-	@Id @GeneratedValue(strategy = GenerationType.IDENTITY) @Column(name="requeriment_id")
-	private Long requerimentId;
+	@Id @GeneratedValue(strategy = GenerationType.IDENTITY) @Column(name="requirement_id")
+	private Long requirementId;
 	
 	@ManyToOne @JoinColumn(name = "registration")
 	private User registration;
@@ -32,23 +32,23 @@ public class Requeriment {
 	@Column(name = "send_date")
 	private String sendDate;
 	
-	public Requeriment() {
+	public Requirement() {
 		
 	}
 
-	public Requeriment(Long requerimentId, User registration, String type, String specification, String reason, String sendDate) {
-		this.requerimentId = requerimentId;
+	public Requirement(Long requirementId, User registration, String type, String specification, String reason, String sendDate) {
+		this.requirementId = requirementId;
 		this.registration = registration;
 		this.type = type;
 		this.specification = specification;
 		this.reason = reason;
 	}
 	
-	public Requeriment(RequerimentDTO entity) {
+	public Requirement(RequirementDTO entity) {
 		BeanUtils.copyProperties(entity, this);
 	}
 	
-	public Requeriment(RequerimentMinDTO entity) {
+	public Requirement(RequirementMinDTO entity) {
 		registration = entity.getRegistration();
 		type = entity.getType();
 		specification = entity.getSpecification();
@@ -56,12 +56,12 @@ public class Requeriment {
 		sendDate = entity.getSendDate();
 	}
 
-	public Long getRequerimentId() {
-		return requerimentId;
+	public Long getRequirementId() {
+		return requirementId;
 	}
 
-	public void setRequerimentId(Long requerimentId) {
-		this.requerimentId = requerimentId;
+	public void setRequirementId(Long requirementId) {
+		this.requirementId = requirementId;
 	}
 
 	public User getRegistration() {
@@ -106,7 +106,7 @@ public class Requeriment {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(requerimentId);
+		return Objects.hash(requirementId);
 	}
 
 	@Override
@@ -117,7 +117,7 @@ public class Requeriment {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Requeriment other = (Requeriment) obj;
-		return Objects.equals(requerimentId, other.requerimentId);
+		Requirement other = (Requirement) obj;
+		return Objects.equals(requirementId, other.requirementId);
 	}
 }
