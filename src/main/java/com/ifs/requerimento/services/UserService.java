@@ -42,6 +42,11 @@ public class UserService {
 	}
 	
 	@Transactional(readOnly = true)
+	public UserDTO findByPhoneNumber(String phoneNumber){
+		return new UserDTO(userRepository.findByPhoneNumber(phoneNumber));
+	}
+	
+	@Transactional(readOnly = true)
 	public List<UserDTO> findByRegistrationOrName(String registrationName){
 		return userRepository.findByRegistrationOrName(registrationName).stream().map(x -> new UserDTO(x)).toList();
 	}

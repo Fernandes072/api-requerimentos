@@ -45,6 +45,11 @@ public class UserController {
 		return userService.findByEmail(email);
 	}
 	
+	@GetMapping(value = "/phoneNumber/{phoneNumber}")
+	public UserDTO findByPhoneNumber(@PathVariable String phoneNumber){
+		return userService.findByPhoneNumber(phoneNumber);
+	}
+	
 	@GetMapping(value = "/search/{registrationName}")
 	public List<UserDTO> findByRegistrationOrName(@PathVariable String registrationName){
 		return userService.findByRegistrationOrName(registrationName);
